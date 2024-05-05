@@ -1,0 +1,7 @@
+PGHOST='Host Here'
+PGDATABASE='DataBase name'
+PGUSER='username'
+PGPASSWORD='password'
+ENDPOINT_ID='db endpoint'
+
+JWT_SECRET=your secret
