@@ -9,6 +9,7 @@ const jwt = require('jsonwebtoken');
 
 const validateToken = async (req, resp, next) => {
     const token = req.headers.authorization;
+    console.log(token);
     if (!token) {
         return resp.status(401).json({ message: 'Token not provided'});
     }

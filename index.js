@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const { createServer } = require('http');
 const signUpRouter = require('./controllers/signup');
 const signInRouter = require('./controllers/signin');
-// const messageRouter = require('./controllers/message');
+const chatsRouter = require('./controllers/chats');
 const usersRouter = require('./controllers/users');
 
 const { Server } = require("socket.io");
@@ -59,7 +59,7 @@ app.use(express.json());
 app.use(bodyParser.json({ type: 'application/*+json' }))
 app.use('/signUp', signUpRouter);
 app.use('/signIn', signInRouter);
-// app.use('/chats', validateToken, messageRouter);
+app.use('/chats', validateToken, chatsRouter);
 app.use('/users', usersRouter);
 
 httpServer.listen(8080, () => {

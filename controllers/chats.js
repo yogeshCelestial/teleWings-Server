@@ -2,11 +2,12 @@ const router = require('express').Router();
 const { sql } = require('../db');
 
 router.get('/', async (req, resp) => {
-    const { searchVal } = req.query;
+    const { senderId } = req.query;
+    console.log(senderId);
     try {
-        const users = await sql`SELECT userId, name FROM users WHERE name LIKE ${'%' + searchVal + '%'}`;
-        if (users.length) {
-            resp.status(200).json(users);
+        const chats = await sql`SELECT * FROM chats WHERE "senderId" = ${senderId} OR "receiverId" = ${senderId}`;
+        if (chats.length) {
+            resp.status(200).json(chats);
         }
     } catch (err) {
         return resp.status(400).json({ message: 'Bad Request' });
